@@ -1,6 +1,6 @@
 -module(client_test).
 -include_lib("eunit/include/eunit.hrl").
--import(client_boundary, [all/0, gen_id/0, gen_id/1, delete/2]).
+-import(client_repo, [all/0, gen_id/0, gen_id/1, delete/2]).
 -include("client_core.hrl").
 
 all_test() ->

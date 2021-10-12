@@ -1,4 +1,4 @@
--module(client_boundary).
+-module(client_repo).
 -export([all/0, gen_id/0, gen_id/1, delete/2]).
 -include("client_core.hrl").
 
