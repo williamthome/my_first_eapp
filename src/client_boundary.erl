@@ -1,5 +1,5 @@
 -module(client_boundary).
--export([get_clients/0, gen_id/0, gen_id/1]).
+-export([get_clients/0, gen_id/0, gen_id/1, delete/2]).
 -include("client_core.hrl").
 
 get_clients() ->
@@ -28,3 +28,10 @@ gen_id([]) ->
 gen_id(Clients) when is_list(Clients) ->
   [#client{id = LastId} | _tail] = lists:reverse(Clients),
   LastId + 1.
+
+delete(Clients, Id)
+  when is_list(Clients), is_integer(Id), Id >= 0 ->
+    lists:filter(
+      fun(#client{id = ClientId}) -> ClientId =/= Id end,
+      Clients
+    ).
