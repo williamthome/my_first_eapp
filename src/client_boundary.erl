@@ -1,4 +1,4 @@
--module(main).
+-module(client_boundary).
 -export([get_clients/0, gen_id/0, gen_id/1]).
 -include("client_core.hrl").
 

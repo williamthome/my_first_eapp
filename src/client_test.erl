@@ -1,6 +1,6 @@
--module(main_test).
+-module(client_test).
 -include_lib("eunit/include/eunit.hrl").
--import(main, [get_clients/0, gen_id/0, gen_id/1]).
+-import(client_boundary, [get_clients/0, gen_id/0, gen_id/1]).
 -include("client_core.hrl").
 
 get_clients_test() ->
