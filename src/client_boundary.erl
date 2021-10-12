@@ -1,8 +1,8 @@
 -module(client_boundary).
--export([get_clients/0, gen_id/0, gen_id/1, delete/2]).
+-export([all/0, gen_id/0, gen_id/1, delete/2]).
 -include("client_core.hrl").
 
-get_clients() ->
+all() ->
   [
     #client{
       id = 0,
@@ -20,7 +20,7 @@ get_clients() ->
   ].
 
 gen_id() ->
-  gen_id(get_clients()).
+  gen_id(all()).
 
 gen_id([]) ->
   0;
