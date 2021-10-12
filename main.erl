@@ -1,5 +1,5 @@
 -module(main).
--export([get_clients/0]).
+-export([get_clients/0, gen_id/0, gen_id/1]).
 -include("client_core.hrl").
 
 get_clients() ->
@@ -18,3 +18,13 @@ get_clients() ->
       address = "Acre"
     }
   ].
+
+gen_id() ->
+  gen_id(get_clients()).
+
+gen_id([]) ->
+  0;
+
+gen_id(Clients) when is_list(Clients) ->
+  [#client{id = LastId} | _tail] = lists:reverse(Clients),
+  LastId + 1.
