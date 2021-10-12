@@ -26,7 +26,7 @@ gen_id([]) ->
   0;
 
 gen_id(Clients) when is_list(Clients) ->
-  [#client{id = LastId} | _tail] = lists:reverse(Clients),
+  #client{id = LastId} = lists:last(Clients),
   LastId + 1.
 
 delete(Clients, Id)
