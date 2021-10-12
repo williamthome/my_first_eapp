@@ -7,12 +7,14 @@ get_clients_test() ->
   ?assertNot(length(get_clients()) =:= 0).
 
 gen_id_test() ->
-  ?assertEqual(gen_id([]), 0),
-  Clients = [#client{id = 0}],
-  ?assertEqual(gen_id(Clients), 1).
+  ?assertEqual(gen_id([]), 0), % if empty list id must be zero
+  Id = 0,
+  ExpectedId = Id + 1,
+  Clients = [#client{id = Id}],
+  ?assertEqual(gen_id(Clients), ExpectedId).
 
 delete_client_test() ->
-  Clients = [#client{id = 0}],
-  ?assertEqual(length(Clients), 1),
-  NewClients = delete(Clients, 0),
+  Id = 0,
+  Clients = [#client{id = Id}],
+  NewClients = delete(Clients, Id),
   ?assertEqual(length(NewClients), 0).
