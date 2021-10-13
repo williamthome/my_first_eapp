@@ -1,7 +1,7 @@
 -module(client_repo).
 -export([all/0, gen_id/0, gen_id/1, delete/2, insert/1]).
 -include("client_core.hrl").
--import(user_input, [read_string/1]).
+-import(user_input, [read_string/1, read_string_array/2]).
 -import(utils, [date_from_pt_br/1]).
 
 all() ->
@@ -35,7 +35,7 @@ insert(Clients) when is_list(Clients) ->
   Name = user_input:read_string("Nome"),
   Birthdate = date_from_pt_br(user_input:read_string("Data de nascimento")),
   Address = user_input:read_string("Endereço"),
-  Emails = [user_input:read_string("e-Mail")],
+  Emails = user_input:read_string_array("e-Mail (\".\" para concluir)", "."),
   Client = #client{
     id = gen_id(Clients),
     name = Name,
